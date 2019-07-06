@@ -28,6 +28,9 @@ format:
 	isort -rc .
 	black .
 
+black:
+	black .
+
 check:
 	isort --check -rc .
 	black --check .
