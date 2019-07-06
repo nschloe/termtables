@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/nschloe/termtables"><img alt="termtables" src="https://nschloe.github.io/termtables/termtables.svg" width="60%"></a>
-  <p>The tables have termed.</p>
+  <p align="center">The tables have termed.</p>
 </p>
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/termtables/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/termtables/tree/master)
