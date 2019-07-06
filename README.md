@@ -1,4 +1,7 @@
-# termtables
+<p align="center">
+  <a href="https://github.com/nschloe/termtables"><img alt="tikzplotlib" src="https://nschloe.github.io/tikzplotlib/logo-tikzplotlib.svg" width="60%"></a>
+  The tables have termed.
+</p>
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/termtables/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/termtables/tree/master)
 [![travis](https://img.shields.io/travis/nschloe/termtables.svg?style=flat-square)](https://travis-ci.org/nschloe/termtables)
@@ -9,75 +12,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/termtables.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/termtables)
 [![PyPi downloads](https://img.shields.io/pypi/dd/termtables.svg?style=flat-square)](https://pypistats.org/packages/termtables)
 
-A Python project template that highlights some best practices in Python packaging. Can
-be used as a [GitHub
-template](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/)
-for your new Python project.
-
-### Best practices
-
-* The **name** of the git repo should be the PyPi name of the package should be what you
-  you type as `import mypackagename`. That means no hyphens in package names!
-
-* Your package should be a **one-trick pony**. Nobody wants to install a huge toolbox if
-  all they need is the image converter in it.
-
-* After `import yourpackagename`, people should be able to call
-  `yourpackagename.__version__` plus some other meta data. This helps with debugging.
-
-* Choose a **license** for your code and provide a `LICENSE[.txt]` in the root level of
-  your package as well as a statement in your main README.
-  [choosealicense.com](https://choosealicense.com/) can help you make a decision.
-
-* Use **linting and formatting**, include those in your integration tests.
-    - [black](https://github.com/python/black) is a formatter that I like because you
-      cannot configure it -- black is black.
-    - Good linters are [flake8](http://flake8.pycqa.org/en/latest/) and
-      [pylint](https://www.pylint.org/).
-    - [isort](https://pypi.org/project/isort/) sorts your imports alphabetically.
-
-* Once you have tests in order, make sure they are executed with every git push. Two
-  popular **CI services** that run your tests are [travis](https://travis-ci.org/) and
-  [circleci](https://circleci.com/). This repository contains the config files for each
-  of the two.
-
-* Make sure that **nobody can push to master**. On GitHub, go to Settings -> Branches ->
-  Add rule and select _Require status checks to pass before merging_ and _Include
-  administrators_. Development happens in pull requests, this makes sure that nobody --
-  including yourself -- ever accidentally pushes something broken to master.
-
-* Use a tool for measuring **test coverage**. [codecov](https://codecov.io/) is one, and
-  the circleci config submits the data to it.
-
-* If you have CI set up, want to show test coverage, or advertise
-  the availability on PyPi, do so using a **badge** at the top of your README. Check out
-  [shields.io](https://shields.io/) for what's available.
-
-* Include [**contributing guidelines**](CONTRIBUTING.md) and a [**code of
-  conduct**](CODE_OF_CONDUCT.md) (edit to add appropriate
-  [enforcement](CODE_OF_CONDUCT.md#enforcement) contacts or [use a
-  template](https://help.github.com/en/articles/adding-a-code-of-conduct-to-your-project))
-  to help foster a community.
-
-### What you can do with this template
-
-First run
-```
-find . -type f -print0 -name "*.py" -o -name Makefile -o -name "*.yml" | xargs -0 sed -i 's/termtables/your-project-name/g'
-```
-and rename the folder `termtables` to customize the name.
-
-There is a simple `Makefile` that can help you with certain tasks:
-  * Run `make format` to apply formatting.
-  * Run `make check` to check formatting and style.
-  * Run `make publish` to
-     - tag your project on git (`make tag`)
-     - upload your package to PyPi (`make upload`)
-
-    After publishing, people can install your package with
-    ```
-    pip3 install --user termtables
-    ```
 
 ### Testing
 
