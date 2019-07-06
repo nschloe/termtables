@@ -4,7 +4,6 @@
 </p>
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/termtables/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/termtables/tree/master)
-[![travis](https://img.shields.io/travis/nschloe/termtables.svg?style=flat-square)](https://travis-ci.org/nschloe/termtables)
 [![codecov](https://img.shields.io/codecov/c/github/nschloe/termtables.svg?style=flat-square)](https://codecov.io/gh/nschloe/termtables)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
 [![awesome](https://img.shields.io/badge/awesome-yes-8209ba.svg?style=flat-square)](https://github.com/nschloe/termtables)
