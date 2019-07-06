@@ -14,7 +14,7 @@ def test_table():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.get_string(data)
+    string = tt.to_string(data)
 
     assert (
         string
@@ -41,7 +41,7 @@ def test_table_double():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.get_string(data, border_style="double")
+    string = tt.to_string(data, border_style="double")
 
     assert (
         string
@@ -64,7 +64,7 @@ def test_table_ascii():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.get_string(data, border_style="thin", force_ascii=True)
+    string = tt.to_string(data, border_style="thin", force_ascii=True)
 
     assert (
         string
@@ -87,7 +87,7 @@ def test_table_mixed():
     numpy.random.seed(0)
     data = [[0, 0.123], [1, 2.13], [2, 613.2323]]
 
-    string = tt.get_string(data, border_style="thin", force_ascii=True)
+    string = tt.to_string(data, border_style="thin", force_ascii=True)
 
     assert (
         string
@@ -110,7 +110,7 @@ def test_table_padding_top():
     numpy.random.seed(0)
     data = [[0, 0.123], [1, 2.13], [2, 613.2323]]
 
-    string = tt.get_string(data, padding=(1, 0))
+    string = tt.to_string(data, padding=(1, 0))
 
     assert (
         string
@@ -139,7 +139,7 @@ def test_table_padding_both():
     numpy.random.seed(0)
     data = [[0, 0.123], [1, 2.13], [2, 613.2323]]
 
-    string = tt.get_string(data, padding=(1, 1))
+    string = tt.to_string(data, padding=(1, 1))
 
     assert (
         string
@@ -164,7 +164,7 @@ def test_table_alignment():
     numpy.random.seed(0)
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.get_string(data, force_ascii=True, alignment="lcr")
+    string = tt.to_string(data, force_ascii=True, alignment="lcr")
 
     assert (
         string
@@ -184,7 +184,7 @@ def test_noborder():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.get_string(data, border_style=None, padding=0)
+    string = tt.to_string(data, border_style=None, padding=0)
 
     assert (
         string
@@ -205,7 +205,7 @@ def test_header():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.get_string(data, alignment="lcr")
+    string = tt.to_string(data, alignment="lcr")
 
     assert (
         string
@@ -227,7 +227,7 @@ def test_header_ascii():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.get_string(data, force_ascii=True, alignment="lcr")
+    string = tt.to_string(data, force_ascii=True, alignment="lcr")
 
     assert (
         string
@@ -253,7 +253,7 @@ def test_header_thick():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.get_string(data, border_style=("thin", "thick"), alignment="lcr")
+    string = tt.to_string(data, border_style=("thin", "thick"), alignment="lcr")
 
     assert (
         string

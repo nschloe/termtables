@@ -171,7 +171,7 @@ def _hjoin_multiline(join_char, strings):
     return "\n".join([p.rstrip() for p in pp])
 
 
-def get_string(
+def to_string(
     data,
     alignment="l",
     padding=(0, 1),

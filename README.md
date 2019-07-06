@@ -11,7 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/termtables.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/termtables)
 [![PyPi downloads](https://img.shields.io/pypi/dd/termtables.svg?style=flat-square)](https://pypistats.org/packages/termtables)
 
-asciiplotlib provides many options for table plotting. For the most basic example, the
+termtables provides many options for table plotting. For the most basic example, the
 code
 ```python
 import termtables as tt
@@ -20,7 +20,7 @@ import numpy
 numpy.random.seed(0)
 data = numpy.random.rand(5, 2)
 
-print(tt.get_string(data))
+print(tt.to_string(data))
 ```
 produces
 
@@ -36,7 +36,7 @@ data = [
     [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
 ]
 
-print(tt.get_string(data, border_style="thin", force_ascii=True, padding=(0, 1), alignment="lcr"))
+print(tt.to_string(data, border_style="thin", force_ascii=True, padding=(0, 1), alignment="lcr"))
 ```
 produces
 ```
