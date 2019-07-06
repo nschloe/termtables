@@ -21,6 +21,7 @@ jobs:
       - run: pip3 install -U pytest pytest-cov
       - checkout
       - run: pip3 install .[all]
+      - run: pip3 install -r test-requirements.txt
       # The tests
       - run: cd test/ && MPLBACKEND=Agg pytest --cov termtables
       # submit to codecov
