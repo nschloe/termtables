@@ -299,14 +299,18 @@ def test_padding_0():
         data, style=tt.styles.ascii_thin_double, padding=0, alignment="lcr"
     )
 
-    assert (
-        string
-        == """+---------------+---------------+---------------+
+    ref = """+---------------+---------------+---------------+
 |1              |       2       |              3|
 +---------------+---------------+---------------+
 |613.23236243236|613.23236243236|613.23236243236|
 +---------------+---------------+---------------+"""
+
+    assert string == ref
+
+    string = tt.to_string(
+        data, style=tt.styles.ascii_thin_double, padding=(0,), alignment="lcr"
     )
+    assert string == ref
     return
 
 
