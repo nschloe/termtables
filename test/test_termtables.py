@@ -405,9 +405,7 @@ def test_booktabs():
 def test_booktabs_ascii():
     numpy.random.seed(0)
     header = ["a", "bb", "ccc"]
-    data = [
-        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
-    ]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(data, header=header, style=tt.styles.ascii_booktabs)
 
