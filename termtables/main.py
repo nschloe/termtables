@@ -1,7 +1,7 @@
 from collections.abc import Sequence
 
-from .helpers import create_padding_tuple
 from . import styles
+from .helpers import create_padding_tuple
 
 
 def _create_alignment(alignment, num_columns):
@@ -79,7 +79,7 @@ def _hjoin_multiline(join_char, strings):
 
 
 def to_string(
-    data, header=None, alignment="l", padding=(0, 1), border_style=styles.thin_double
+    data, header=None, alignment="l", padding=(0, 1), style=styles.thin_double
 ):
     try:
         depth = len(data.shape)
@@ -104,11 +104,11 @@ def to_string(
 
     padding = create_padding_tuple(padding)
     alignments = _create_alignment(alignment, num_columns)
-    if border_style is None:
+    if style is None:
         border_chars, block_sep_chars = None, None
     else:
-        if len(border_style) == 11:
-            border_chars = border_style
+        if len(style) == 11:
+            border_chars = style
             block_sep_chars = [
                 border_chars[6],
                 border_chars[0],
@@ -116,9 +116,9 @@ def to_string(
                 border_chars[7],
             ]
         else:
-            assert len(border_style) == 15
-            border_chars = border_style[:11]
-            block_sep_chars = border_style[11:]
+            assert len(style) == 15
+            border_chars = style[:11]
+            block_sep_chars = style[11:]
 
     strings = [[[str(item) for item in row] for row in block] for block in data]
 
@@ -149,7 +149,6 @@ def to_string(
     for k, block in enumerate(strings):
         strings[k] = intermediate_border_row.join(block)
 
-    # bs = _get_block_separator_chars(border_style, block_separator, force_ascii)
     if block_sep_chars:
         bs = block_sep_chars
         block_sep_row = (
