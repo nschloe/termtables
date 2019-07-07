@@ -1,7 +1,7 @@
-import sys
 from collections.abc import Sequence
 
 from .helpers import create_padding_tuple
+from . import styles
 
 
 def _create_alignment(alignment, num_columns):
@@ -9,99 +9,6 @@ def _create_alignment(alignment, num_columns):
         alignment = num_columns * alignment
     assert len(alignment) == num_columns
     return alignment
-
-
-def _get_border_chars(border_style, force_ascii):
-    if isinstance(border_style, tuple):
-        assert len(border_style) == 2
-    else:
-        border_style = (border_style, border_style)
-
-    # Take care of the regular border first, then the block separators.
-    border, block_sep = border_style
-
-    if border is None:
-        border_chars = None
-    elif isinstance(border_style, list):
-        assert len(border) == 11
-        border_chars = border
-    else:
-        if (
-            hasattr(sys.stdout, "encoding")
-            and sys.stdout.encoding in ["UTF-8", "UTF8"]
-            and not force_ascii
-        ):
-            border_chars = {
-                "thin": ["─", "│", "┌", "┐", "└", "┘", "├", "┤", "┬", "┴", "┼"],
-                "rounded": ["─", "│", "╭", "╮", "╰", "╯", "├", "┤", "┬", "┴", "┼"],
-                "thick": ["━", "┃", "┏", "┓", "┗", "┛", "┣", "┫", "┳", "┻", "╋"],
-                "double": ["═", "║", "╔", "╗", "╚", "╝", "╠", "╣", "╦", "╩", "╬"],
-            }[border]
-        else:
-            border_chars = {
-                "thin": ["-", "|", "+", "+", "+", "+", "+", "+", "+", "+", "+"],
-                "rounded": ["-", "|", "/", "\\", "\\", "/", "+", "+", "+", "+", "+"],
-                "thick": ["=", "I", "+", "+", "+", "+", "+", "+", "+", "+", "+"],
-                "double": ["=", "H", "+", "+", "+", "+", "+", "+", "+", "+", "+"],
-            }[border]
-
-    # block separators
-    if block_sep is None:
-        block_chars = None
-    elif border == block_sep:
-        bc = border_chars
-        block_chars = [bc[6], bc[0], bc[10], bc[7]]
-    else:
-        if (
-            hasattr(sys.stdout, "encoding")
-            and sys.stdout.encoding in ["UTF-8", "UTF8"]
-            and not force_ascii
-        ):
-            block_chars = {
-                ("thin", "thin"): ["├", "─", "┼", "┤"],
-                ("thin", "rounded"): ["├", "─", "┼", "┤"],
-                ("thin", "thick"): ["┝", "━", "┿", "┥"],
-                ("thin", "double"): ["╞", "═", "╪", "╡"],
-                #
-                ("rounded", "thin"): ["├", "─", "┼", "┤"],
-                ("rounded", "rounded"): ["├", "─", "┼", "┤"],
-                ("rounded", "thick"): ["┝", "━", "┿", "┥"],
-                ("rounded", "double"): ["╞", "═", "╪", "╡"],
-                #
-                ("thick", "thin"): ["┠", "─", "╂", "┨"],
-                ("thick", "rounded"): ["┠", "─", "╂", "┨"],
-                ("thick", "thick"): ["┣", "━", "╋", "┫"],
-                ("thick", "double"): ["┠", "═", "╂", "┨"],
-                #
-                ("double", "thin"): ["╟", "─", "╫", "╢"],
-                ("double", "rounded"): ["╟", "─", "╫", "╢"],
-                ("double", "thick"): ["╟", "━", "╫", "╢"],
-                ("double", "double"): ["╠", "═", "╬", "╣"],
-            }[(border, block_sep)]
-        else:
-            block_chars = {
-                ("thin", "thin"): ["+", "-", "+", "+"],
-                ("thin", "rounded"): ["+", "-", "+", "+"],
-                ("thin", "thick"): ["+", "=", "+", "+"],
-                ("thin", "double"): ["+", "=", "+", "+"],
-                #
-                ("rounded", "thin"): ["+", "-", "+", "+"],
-                ("rounded", "rounded"): ["+", "-", "+", "+"],
-                ("rounded", "thick"): ["+", "=", "+", "+"],
-                ("rounded", "double"): ["+", "=", "+", "+"],
-                #
-                ("thick", "thin"): ["+", "-", "+", "+"],
-                ("thick", "rounded"): ["+", "-", "+", "+"],
-                ("thick", "thick"): ["+", "=", "+", "+"],
-                ("thick", "double"): ["+", "=", "+", "+"],
-                #
-                ("double", "thin"): ["+", "-", "+", "+"],
-                ("double", "rounded"): ["+", "-", "+", "+"],
-                ("double", "thick"): ["+", "=", "+", "+"],
-                ("double", "double"): ["+", "=", "+", "+"],
-            }[(border, block_sep)]
-
-    return border_chars, block_chars
 
 
 def _get_column_widths(strings, num_columns):
@@ -172,12 +79,7 @@ def _hjoin_multiline(join_char, strings):
 
 
 def to_string(
-    data,
-    header=None,
-    alignment="l",
-    padding=(0, 1),
-    border_style=("thin", "double"),
-    force_ascii=False,
+    data, header=None, alignment="l", padding=(0, 1), border_style=styles.thin_double
 ):
     try:
         depth = len(data.shape)
@@ -202,7 +104,21 @@ def to_string(
 
     padding = create_padding_tuple(padding)
     alignments = _create_alignment(alignment, num_columns)
-    border_chars, block_sep_chars = _get_border_chars(border_style, force_ascii)
+    if border_style is None:
+        border_chars, block_sep_chars = None, None
+    else:
+        if len(border_style) == 11:
+            border_chars = border_style
+            block_sep_chars = [
+                border_chars[6],
+                border_chars[0],
+                border_chars[10],
+                border_chars[7],
+            ]
+        else:
+            assert len(border_style) == 15
+            border_chars = border_style[:11]
+            block_sep_chars = border_style[11:]
 
     strings = [[[str(item) for item in row] for row in block] for block in data]
 

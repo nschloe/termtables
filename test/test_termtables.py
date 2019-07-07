@@ -42,7 +42,6 @@ def test_separate_header():
     data = numpy.random.rand(3, 2)
 
     string = tt.to_string(data, header=["alpha", "beta"])
-    print(string)
 
     assert (
         string
@@ -67,7 +66,7 @@ def test_table_double():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.to_string(data, border_style="double")
+    string = tt.to_string(data, border_style=tt.styles.double)
 
     assert (
         string
@@ -90,7 +89,7 @@ def test_table_ascii():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.to_string(data, border_style="thin", force_ascii=True)
+    string = tt.to_string(data, border_style=tt.styles.thin_ascii)
 
     assert (
         string
@@ -113,7 +112,7 @@ def test_table_mixed():
     numpy.random.seed(0)
     data = [[0, 0.123], [1, 2.13], [2, 613.2323]]
 
-    string = tt.to_string(data, border_style="thin", force_ascii=True)
+    string = tt.to_string(data, border_style=tt.styles.thin_ascii)
 
     assert (
         string
@@ -190,7 +189,7 @@ def test_table_alignment():
     numpy.random.seed(0)
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, force_ascii=True, alignment="lcr")
+    string = tt.to_string(data, border_style=tt.styles.thin_ascii, alignment="lcr")
 
     assert (
         string
@@ -253,7 +252,9 @@ def test_header_ascii():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.to_string(data, force_ascii=True, alignment="lcr")
+    string = tt.to_string(
+        data, border_style=tt.styles.thin_double_ascii, alignment="lcr"
+    )
 
     assert (
         string
@@ -279,7 +280,7 @@ def test_header_thick():
         [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
     ]
 
-    string = tt.to_string(data, border_style=("thin", "thick"), alignment="lcr")
+    string = tt.to_string(data, border_style=tt.styles.thin_thick, alignment="lcr")
 
     assert (
         string
