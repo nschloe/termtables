@@ -1,7 +1,23 @@
 from collections.abc import Sequence
 
 from . import styles
-from .helpers import create_padding_tuple
+
+
+def _create_padding_tuple(padding):
+    # self._padding is a 4-tuple: top, right, bottom, left (just like CSS)
+    if isinstance(padding, int):
+        out = (padding, padding, padding, padding)
+    else:
+        if len(padding) == 1:
+            out = (padding[0], padding[0], padding[0], padding[0])
+        elif len(padding) == 2:
+            out = (padding[0], padding[1], padding[0], padding[1])
+        elif len(padding) == 3:
+            out = (padding[0], padding[1], padding[2], padding[1])
+        else:
+            assert len(padding) == 4
+            out = (padding[0], padding[1], padding[2], padding[3])
+    return out
 
 
 def _create_alignment(alignment, num_columns):
@@ -102,7 +118,7 @@ def to_string(
         for row in block:
             assert len(row) == num_columns
 
-    padding = create_padding_tuple(padding)
+    padding = _create_padding_tuple(padding)
     alignments = _create_alignment(alignment, num_columns)
     if style is None:
         border_chars, block_sep_chars = None, None

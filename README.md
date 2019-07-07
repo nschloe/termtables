@@ -31,12 +31,12 @@ example,
 ```python
 import termtables as tt
 
+header = ["a", "bb", "ccc"]
 data = [
-    [["a", "bb", "ccc"]],
-    [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
+    [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-print(tt.to_string(data, border_style="thin", force_ascii=True, padding=(0, 1), alignment="lcr"))
+print(tt.to_string(data, header=header, style=tt.styles.thin_ascii, padding=(0, 1), alignment="lcr"))
 ```
 produces
 ```
