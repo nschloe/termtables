@@ -225,12 +225,10 @@ def test_noborder():
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_header():
-    data = [
-        [["a", "bb", "ccc"]],
-        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
-    ]
+    header = ["a", "bb", "ccc"]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, alignment="lcr")
+    string = tt.to_string(data, header, alignment="lcr")
 
     assert (
         string
@@ -247,12 +245,12 @@ def test_header():
 
 def test_header_ascii():
     numpy.random.seed(0)
-    data = [
-        [["a", "bb", "ccc"]],
-        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
-    ]
+    header = ["a", "bb", "ccc"]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_double_ascii, alignment="lcr")
+    string = tt.to_string(
+        data, header=header, style=tt.styles.thin_double_ascii, alignment="lcr"
+    )
 
     assert (
         string
@@ -273,12 +271,12 @@ def test_header_ascii():
 )
 def test_header_thick():
     numpy.random.seed(0)
-    data = [
-        [["a", "bb", "ccc"]],
-        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
-    ]
+    header = ["a", "bb", "ccc"]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_thick, alignment="lcr")
+    string = tt.to_string(
+        data, header=header, style=tt.styles.thin_thick, alignment="lcr"
+    )
 
     assert (
         string
@@ -293,13 +291,13 @@ def test_header_thick():
     return
 
 
-def test_header_padding_0():
+def test_padding_0():
     numpy.random.seed(0)
-    data = [
-        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
-    ]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_double_ascii, padding=0, alignment="lcr")
+    string = tt.to_string(
+        data, style=tt.styles.thin_double_ascii, padding=0, alignment="lcr"
+    )
 
     assert (
         string
@@ -312,13 +310,13 @@ def test_header_padding_0():
     return
 
 
-def test_header_padding_10():
+def test_padding_10():
     numpy.random.seed(0)
-    data = [
-        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
-    ]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_double_ascii, padding=(1, 0), alignment="lcr")
+    string = tt.to_string(
+        data, style=tt.styles.thin_double_ascii, padding=(1, 0), alignment="lcr"
+    )
 
     assert (
         string
@@ -335,13 +333,13 @@ def test_header_padding_10():
     return
 
 
-def test_header_padding_012():
+def test_padding_012():
     numpy.random.seed(0)
-    data = [
-        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
-    ]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2), alignment="lcr")
+    string = tt.to_string(
+        data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2), alignment="lcr"
+    )
 
     assert (
         string
@@ -358,13 +356,13 @@ def test_header_padding_012():
     return
 
 
-def test_header_padding_0123():
+def test_padding_0123():
     numpy.random.seed(0)
-    data = [
-        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
-    ]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2, 3), alignment="lcr")
+    string = tt.to_string(
+        data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2, 3), alignment="lcr"
+    )
 
     assert (
         string
@@ -377,5 +375,51 @@ def test_header_padding_0123():
 |                   |                   |                   |
 |                   |                   |                   |
 +-------------------+-------------------+-------------------+"""
+    )
+    return
+
+
+def test_booktabs():
+    numpy.random.seed(0)
+    data = [
+        [["a", "bb", "ccc"]],
+        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
+    ]
+
+    string = tt.to_string(data, style=tt.styles.booktabs)
+
+    assert string == "\n".join(
+        [
+            " ───────────────────────────────────────────────────── ",
+            "  a                 bb                ccc",
+            " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ",
+            "  1                 2                 3",
+            " ───────────────────────────────────────────────────── ",
+            "  613.23236243236   613.23236243236   613.23236243236",
+            " ───────────────────────────────────────────────────── ",
+        ]
+    )
+    return
+
+
+def test_booktabs_ascii():
+    numpy.random.seed(0)
+    data = [
+        [["a", "bb", "ccc"]],
+        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
+    ]
+
+    string = tt.to_string(data, style=tt.styles.booktabs_ascii)
+
+    assert string == "\n".join(
+        [
+            " ----------------------------------------------------- ",
+            "  a                 bb                ccc",
+            " ===================================================== ",
+            "  1                 2                 3",
+            " ----------------------------------------------------- ",
+            "  613.23236243236   613.23236243236   613.23236243236",
+            " ----------------------------------------------------- ",
+        ]
     )
     return

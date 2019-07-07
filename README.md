@@ -11,8 +11,13 @@
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/termtables.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/termtables)
 [![PyPi downloads](https://img.shields.io/pypi/dd/termtables.svg?style=flat-square)](https://pypistats.org/packages/termtables)
 
-termtables provides many options for table plotting. For the most basic example, the
-code
+
+termtables is a lightweight Python package for pretty-printing tables on the command
+line. Install with
+```
+pip3 install termtables --user
+```
+The code
 ```python
 import termtables as tt
 import numpy
@@ -36,7 +41,7 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-print(tt.to_string(data, header=header, style=tt.styles.thin_ascii, padding=(0, 1), alignment="lcr"))
+print(tt.to_string(data, header=header, style=tt.styles.thin_double_ascii, padding=(0, 1), alignment="lcr"))
 ```
 produces
 ```
