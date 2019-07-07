@@ -102,9 +102,7 @@ def to_string(
     except AttributeError:
         depth = _get_depth(data)
 
-    if depth == 1:
-        data = [[data]]
-    elif depth == 2:
+    if depth == 2:
         data = [data]
     else:
         assert depth == 3
