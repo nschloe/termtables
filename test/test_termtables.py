@@ -89,7 +89,7 @@ def test_table_ascii():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
 
-    string = tt.to_string(data, style=tt.styles.thin_ascii)
+    string = tt.to_string(data, style=tt.styles.ascii_thin)
 
     assert (
         string
@@ -112,7 +112,7 @@ def test_table_mixed():
     numpy.random.seed(0)
     data = [[0, 0.123], [1, 2.13], [2, 613.2323]]
 
-    string = tt.to_string(data, style=tt.styles.thin_ascii)
+    string = tt.to_string(data, style=tt.styles.ascii_thin)
 
     assert (
         string
@@ -189,7 +189,7 @@ def test_table_alignment():
     numpy.random.seed(0)
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
-    string = tt.to_string(data, style=tt.styles.thin_ascii, alignment="lcr")
+    string = tt.to_string(data, style=tt.styles.ascii_thin, alignment="lcr")
 
     assert (
         string
@@ -249,7 +249,7 @@ def test_header_ascii():
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(
-        data, header=header, style=tt.styles.thin_double_ascii, alignment="lcr"
+        data, header=header, style=tt.styles.ascii_thin_double, alignment="lcr"
     )
 
     assert (
@@ -296,7 +296,7 @@ def test_padding_0():
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(
-        data, style=tt.styles.thin_double_ascii, padding=0, alignment="lcr"
+        data, style=tt.styles.ascii_thin_double, padding=0, alignment="lcr"
     )
 
     assert (
@@ -315,7 +315,7 @@ def test_padding_10():
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(
-        data, style=tt.styles.thin_double_ascii, padding=(1, 0), alignment="lcr"
+        data, style=tt.styles.ascii_thin, padding=(1, 0), alignment="lcr"
     )
 
     assert (
@@ -338,7 +338,7 @@ def test_padding_012():
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(
-        data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2), alignment="lcr"
+        data, style=tt.styles.ascii_thin, padding=(0, 1, 2), alignment="lcr"
     )
 
     assert (
@@ -361,7 +361,7 @@ def test_padding_0123():
     data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
 
     string = tt.to_string(
-        data, style=tt.styles.thin_double_ascii, padding=(0, 1, 2, 3), alignment="lcr"
+        data, style=tt.styles.ascii_thin, padding=(0, 1, 2, 3), alignment="lcr"
     )
 
     assert (
@@ -409,7 +409,7 @@ def test_booktabs_ascii():
         [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
     ]
 
-    string = tt.to_string(data, header=header, style=tt.styles.booktabs_ascii)
+    string = tt.to_string(data, header=header, style=tt.styles.ascii_booktabs)
 
     assert string == "\n".join(
         [

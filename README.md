@@ -44,7 +44,7 @@ data = [
 string = tt.to_string(
     data,
     header=header,
-    style=tt.styles.thin_double_ascii,
+    style=tt.styles.ascii_thin_double,
     padding=(0, 1),
     alignment="lcr"
 )
@@ -64,7 +64,27 @@ See
 [`test/test_termtables.py`](https://github.com/nschloe/termtables/blob/master/test/test_termtables.py)
 for more examples.
 
-If the styles in `termtables.styles` aren't good enough for you, simply provide your own
+If the styles in `termtables.styles`
+```
+thin
+thin_thick
+thin_double
+rounded
+rounded_thick
+rounded_double
+thick
+thick_thin
+double
+double_thin
+booktabs
+
+ascii_thin
+ascii_thin_double
+ascii_double
+ascii_double_thin
+ascii_booktabs
+```
+aren't good enough for you, simply provide your own
 style as a string of length  11 or 15 (the extra 4 including header-separating
 characters). For example
 ```python
