@@ -41,7 +41,14 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-print(tt.to_string(data, header=header, style=tt.styles.thin_double_ascii, padding=(0, 1), alignment="lcr"))
+string = tt.to_string(
+    data,
+    header=header,
+    style=tt.styles.thin_double_ascii,
+    padding=(0, 1),
+    alignment="lcr"
+)
+print(string)
 ```
 produces
 ```
@@ -56,6 +63,35 @@ produces
 See
 [`test/test_termtables.py`](https://github.com/nschloe/termtables/blob/master/test/test_termtables.py)
 for more examples.
+
+If the styles in `termtables.styles` aren't good enough for you, simply provide your own
+style as a string of length  11 or 15 (the extra 4 including header-separating
+characters). For example
+```python
+import termtables as tt
+
+header = ["a", "bb", "ccc"]
+data = [
+    [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
+]
+
+string = tt.to_string(
+    data,
+    header=header,
+    style="x0123456789abcd"
+)
+print(string)
+```
+produces
+```
+1xxxxxxxxxxxxxxxxx7xxxxxxxxxxxxxxxxx7xxxxxxxxxxxxxxxxx2
+0 a               0 bb              0 ccc             0
+abbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbd
+0 1               0 2               0 3               0
+5xxxxxxxxxxxxxxxxx9xxxxxxxxxxxxxxxxx9xxxxxxxxxxxxxxxxx6
+0 613.23236243236 0 613.23236243236 0 613.23236243236 0
+3xxxxxxxxxxxxxxxxx8xxxxxxxxxxxxxxxxx8xxxxxxxxxxxxxxxxx4
+```
 
 
 ### Testing

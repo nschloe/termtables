@@ -404,12 +404,12 @@ def test_booktabs():
 
 def test_booktabs_ascii():
     numpy.random.seed(0)
+    header = ["a", "bb", "ccc"]
     data = [
-        [["a", "bb", "ccc"]],
-        [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]],
+        [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
     ]
 
-    string = tt.to_string(data, style=tt.styles.booktabs_ascii)
+    string = tt.to_string(data, header=header, style=tt.styles.booktabs_ascii)
 
     assert string == "\n".join(
         [
