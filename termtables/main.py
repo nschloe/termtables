@@ -173,6 +173,7 @@ def _hjoin_multiline(join_char, strings):
 
 def to_string(
     data,
+    header=None,
     alignment="l",
     padding=(0, 1),
     border_style=("thin", "double"),
@@ -190,6 +191,9 @@ def to_string(
     else:
         assert depth == 3
 
+    if header:
+        data = [[header]] + data
+
     # Make sure the data is consistent
     num_columns = len(data[0][0])
     for block in data:
@@ -200,7 +204,7 @@ def to_string(
     alignments = _create_alignment(alignment, num_columns)
     border_chars, block_sep_chars = _get_border_chars(border_style, force_ascii)
 
-    strings = [[["{}".format(item) for item in row] for row in block] for block in data]
+    strings = [[[str(item) for item in row] for row in block] for block in data]
 
     column_widths = _get_column_widths(strings, num_columns)
     column_widths_with_padding = [c + padding[1] + padding[3] for c in column_widths]

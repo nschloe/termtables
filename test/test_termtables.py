@@ -37,6 +37,32 @@ def test_table():
     sys.stdout.encoding not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
+def test_separate_header():
+    numpy.random.seed(0)
+    data = numpy.random.rand(3, 2)
+
+    string = tt.to_string(data, header=["alpha", "beta"])
+    print(string)
+
+    assert (
+        string
+        == """┌────────────────────┬────────────────────┐
+│ alpha              │ beta               │
+╞════════════════════╪════════════════════╡
+│ 0.5488135039273248 │ 0.7151893663724195 │
+├────────────────────┼────────────────────┤
+│ 0.6027633760716439 │ 0.5448831829968969 │
+├────────────────────┼────────────────────┤
+│ 0.4236547993389047 │ 0.6458941130666561 │
+└────────────────────┴────────────────────┘"""
+    )
+    return
+
+
+@pytest.mark.skipif(
+    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
+)
 def test_table_double():
     numpy.random.seed(0)
     data = numpy.random.rand(5, 2)
