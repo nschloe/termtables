@@ -434,9 +434,5 @@ def test_escape_sequences():
     print(string)
 
     assert string == "\n".join(
-        [
-            "┌─────┬─────┐",
-            "│ key │ \033[31mred\033[0m │",
-            "└─────┴─────┘",
-        ]
+        ["┌─────┬─────┐", "│ key │ \033[31mred\033[0m │", "└─────┴─────┘"]
     )
