@@ -1,3 +1,4 @@
+import re
 from collections.abc import Sequence
 
 from . import styles
@@ -27,23 +28,31 @@ def _create_alignment(alignment, num_columns):
     return alignment
 
 
+def _remove_escape_sequences(string):
+    # https://stackoverflow.com/a/14693789/353337
+    ansi_escape = re.compile(r"\x1B[@-_][0-?]*[ -/]*[@-~]")
+    return ansi_escape.sub("", string)
+
+
 def _get_column_widths(strings, num_columns):
-    column_widths = num_columns * [0]
+    widths = num_columns * [0]
     for block in strings:
         for row in block:
             for j, item in enumerate(row):
-                column_widths[j] = max(column_widths[j], len(item))
-    return column_widths
+                widths[j] = max(widths[j], len(_remove_escape_sequences(item)))
+    return widths
 
 
 def _align(strings, alignments, column_widths):
     for block in strings:
         for row in block:
             for k, (item, align, cw) in enumerate(zip(row, alignments, column_widths)):
-                rest = cw - len(item)
-                if rest <= 0:
-                    row[k] = item[:cw]
+                rest = cw - len(_remove_escape_sequences(item))
+                if rest == 0:
+                    # row[k] = item[:cw]
+                    row[k] = item
                 else:
+                    assert rest > 0
                     if align == "l":
                         left = 0
                     elif align == "r":

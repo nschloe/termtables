@@ -425,3 +425,14 @@ def test_booktabs_ascii():
         ]
     )
     return
+
+
+def test_escape_sequences():
+    data = [["key", "\033[31mred\033[0m"]]
+
+    string = tt.to_string(data)
+    print(string)
+
+    assert string == "\n".join(
+        ["┌─────┬─────┐", "│ key │ \033[31mred\033[0m │", "└─────┴─────┘"]
+    )
