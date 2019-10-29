@@ -12,7 +12,7 @@
 [![PyPi downloads](https://img.shields.io/pypi/dm/termtables.svg?style=flat-square)](https://pypistats.org/packages/termtables)
 
 
-termtables is a lightweight Python package for pretty-printing tables on the command
+termtables is a lightweight Python 3 package for pretty-printing tables on the command
 line. Install with
 ```
 pip3 install termtables --user
