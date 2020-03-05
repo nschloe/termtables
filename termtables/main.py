@@ -1,3 +1,4 @@
+import builtins
 import re
 from collections.abc import Sequence
 
@@ -101,6 +102,10 @@ def _hjoin_multiline(join_char, strings):
         pp.append(join_char + join_char.join(p) + join_char)
 
     return "\n".join([p.rstrip() for p in pp])
+
+
+def print(*args, **kwargs):
+    builtins.print(to_string(*args, **kwargs))
 
 
 def to_string(

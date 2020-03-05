@@ -15,7 +15,7 @@
 termtables is a lightweight Python 3 package for pretty-printing tables on the command
 line. Install with
 ```
-pip3 install termtables --user
+pip install termtables
 ```
 The code
 ```python
