@@ -7,6 +7,7 @@
 [![codecov](https://img.shields.io/codecov/c/github/nschloe/termtables.svg?style=flat-square)](https://codecov.io/gh/nschloe/termtables)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 [![awesome](https://img.shields.io/badge/awesome-yes-8209ba.svg?style=flat-square)](https://github.com/nschloe/termtables)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/termtables.svg?style=flat-square)](https://pypi.org/pypi/termtables/)
 [![PyPi Version](https://img.shields.io/pypi/v/termtables.svg?style=flat-square)](https://pypi.org/project/termtables)
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/termtables.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/termtables)
 [![PyPi downloads](https://img.shields.io/pypi/dm/termtables.svg?style=flat-square)](https://pypistats.org/packages/termtables)
@@ -15,7 +16,7 @@
 termtables is a lightweight Python 3 package for pretty-printing tables on the command
 line. Install with
 ```
-pip3 install termtables --user
+pip install termtables
 ```
 The code
 ```python
@@ -25,7 +26,8 @@ import numpy
 numpy.random.seed(0)
 data = numpy.random.rand(5, 2)
 
-print(tt.to_string(data))
+tt.print(data)
+# tt.to_string(data) returns the string
 ```
 produces
 
@@ -41,14 +43,13 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-string = tt.to_string(
+tt.print(
     data,
     header=header,
     style=tt.styles.ascii_thin_double,
     padding=(0, 1),
     alignment="lcr"
 )
-print(string)
 ```
 produces
 ```
@@ -95,12 +96,11 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-string = tt.to_string(
+tt.print(
     data,
     header=header,
     style="x0123456789abcd"
 )
-print(string)
 ```
 produces
 ```
