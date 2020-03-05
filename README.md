@@ -25,7 +25,8 @@ import numpy
 numpy.random.seed(0)
 data = numpy.random.rand(5, 2)
 
-print(tt.to_string(data))
+tt.print(data)
+# tt.to_string(data) returns the string
 ```
 produces
 
@@ -41,14 +42,13 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-string = tt.to_string(
+tt.print(
     data,
     header=header,
     style=tt.styles.ascii_thin_double,
     padding=(0, 1),
     alignment="lcr"
 )
-print(string)
 ```
 produces
 ```
@@ -95,12 +95,11 @@ data = [
     [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
 ]
 
-string = tt.to_string(
+tt.print(
     data,
     header=header,
     style="x0123456789abcd"
 )
-print(string)
 ```
 produces
 ```

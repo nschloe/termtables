@@ -30,7 +30,9 @@ def test_table():
 │ 0.9636627605010293 │ 0.3834415188257777 │
 └────────────────────┴────────────────────┘"""
     )
-    return
+
+    # test print
+    tt.print(data)
 
 
 @pytest.mark.skipif(
