@@ -37,5 +37,11 @@ jobs:
       run: |
         pip install pytest pytest-cov
         pytest --cov termtables
-    # - name: Submit to codecov
-    #   run: bash <(curl -s https://codecov.io/bash)
+    - name: Submit to codecov
+      # https://github.com/jmoiron/humanize/pull/117
+      if: success()
+      run: |
+        curl -s https://codecov.io/bash -o codecov.sh
+        bash codecov.sh -F ${{ matrix.codecov-flag }}
+      env:
+        CODECOV_NAME: ${{ matrix.os }} Python ${{ matrix.python-version }}
