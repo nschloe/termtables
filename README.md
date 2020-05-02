@@ -122,5 +122,4 @@ pytest
 ```
 
 ### License
-
-termtables is published under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+This software is published under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
