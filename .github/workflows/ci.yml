@@ -29,14 +29,10 @@ jobs:
       with:
         python-version: "3.x"
     - uses: actions/checkout@v2
-    - name: Install package
+    - name: Test with tox
       run: |
-        pip install -r test-requirements.txt
-        pip install .[all]
-    - name: Test with pytest
-      run: |
-        pip install pytest pytest-cov
-        pytest --cov termtables
+        pip install tox
+        tox
     - name: Submit to codecov
       # https://github.com/jmoiron/humanize/pull/117
       if: success()

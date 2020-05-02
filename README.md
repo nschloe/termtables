@@ -118,7 +118,7 @@ abbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbd
 
 To run the termtables unit tests, check out this repository and type
 ```
-pytest
+tox
 ```
 
 ### License
