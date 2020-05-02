@@ -46,21 +46,20 @@ data = [
 tt.print(
     data,
     header=header,
-    style=tt.styles.ascii_thin_double,
+    style=tt.styles.markdown,
     padding=(0, 1),
     alignment="lcr"
 )
 ```
 produces
 ```
-+-----------------+-----------------+-----------------+
 | a               |       bb        |             ccc |
-+=================+=================+=================+
+|-----------------|-----------------|-----------------|
 | 1               |        2        |               3 |
-+-----------------+-----------------+-----------------+
 | 613.23236243236 | 613.23236243236 | 613.23236243236 |
-+-----------------+-----------------+-----------------+
 ```
+which is useful for copy-pasting into websites that support Markdown (like GitHub).
+
 See
 [`test/test_termtables.py`](https://github.com/nschloe/termtables/blob/master/test/test_termtables.py)
 for more examples.
@@ -84,6 +83,8 @@ ascii_thin_double
 ascii_double
 ascii_double_thin
 ascii_booktabs
+
+markdown
 ```
 aren't good enough for you, simply provide your own
 style as a string of length  11 or 15 (the extra 4 including header-separating

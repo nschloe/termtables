@@ -196,4 +196,7 @@ def to_string(
         last_border_row = ""
     out = first_border_row + strings + last_border_row
 
+    # remove empty lines
+    out = "\n".join([s for s in out.splitlines() if s.strip()])
+
     return out

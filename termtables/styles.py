@@ -15,3 +15,5 @@ ascii_thin_double = "-|++++++++++=++"
 ascii_double = "=H+++++++++"
 ascii_double_thin = "=H++++++++++-++"
 ascii_booktabs = "-       --- == "
+
+markdown = " |         |-||"
