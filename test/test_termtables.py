@@ -429,6 +429,26 @@ def test_booktabs_ascii():
     return
 
 
+def test_markdown():
+    numpy.random.seed(0)
+    header = ["a", "bb", "ccc"]
+    data = [[1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]]
+
+    string = tt.to_string(data, header=header, style=tt.styles.markdown)
+
+    print(string)
+
+    assert string == "\n".join(
+        [
+            "| a               | bb              | ccc             |",
+            "|-----------------|-----------------|-----------------|",
+            "| 1               | 2               | 3               |",
+            "| 613.23236243236 | 613.23236243236 | 613.23236243236 |",
+        ]
+    )
+    return
+
+
 def test_escape_sequences():
     data = [["key", "\033[31mred\033[0m"]]
 
