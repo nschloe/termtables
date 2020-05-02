@@ -33,11 +33,15 @@ jobs:
       run: |
         pip install tox
         tox
+    #- name: Submit to codecov
+    #  # https://github.com/jmoiron/humanize/pull/117
+    #  if: success()
+    #  run: |
+    #    curl -s https://codecov.io/bash -o codecov.sh
+    #    bash codecov.sh -F ${{ matrix.codecov-flag }}
+    #  env:
+    #    CODECOV_NAME: ${{ matrix.os }} Python ${{ matrix.python-version }}
     - name: Submit to codecov
-      # https://github.com/jmoiron/humanize/pull/117
-      if: success()
-      run: |
-        curl -s https://codecov.io/bash -o codecov.sh
-        bash codecov.sh -F ${{ matrix.codecov-flag }}
-      env:
-        CODECOV_NAME: ${{ matrix.os }} Python ${{ matrix.python-version }}
+      uses: codecov/codecov-action
+      with:
+        flags: ${{ matrix.python-version }}
