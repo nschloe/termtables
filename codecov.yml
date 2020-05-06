@@ -1,1 +1,4 @@
 comment: no
+fixes:
+  - ".*/dist-packages/::"
+  - ".*/site-packages/::"
