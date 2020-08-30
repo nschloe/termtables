@@ -7,7 +7,7 @@ import termtables as tt
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_table():
@@ -36,7 +36,7 @@ def test_table():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_separate_header():
@@ -61,7 +61,7 @@ def test_separate_header():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_table_double():
@@ -130,7 +130,7 @@ def test_table_mixed():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_table_padding_top():
@@ -159,7 +159,7 @@ def test_table_padding_top():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_table_padding_both():
@@ -223,7 +223,7 @@ def test_noborder():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_header():
@@ -268,7 +268,7 @@ def test_header_ascii():
 
 
 @pytest.mark.skipif(
-    sys.stdout.encoding not in ["UTF-8", "UTF8"],
+    sys.stdout.encoding.upper() not in ["UTF-8", "UTF8"],
     reason="Need UTF-8 terminal (not {})".format(sys.stdout.encoding),
 )
 def test_header_thick():

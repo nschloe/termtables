@@ -92,8 +92,7 @@ def _get_depth(l):
 
 
 def _hjoin_multiline(join_char, strings):
-    """Horizontal join of multiline strings
-    """
+    """Horizontal join of multiline strings"""
     cstrings = [string.split("\n") for string in strings]
     max_num_lines = max(len(item) for item in cstrings)
     pp = []
