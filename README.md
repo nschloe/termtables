@@ -53,6 +53,7 @@ tt.print(
 )
 ```
 produces
+<!--pytest-codeblocks:expected-output-->
 ```
 | a               |       bb        |             ccc |
 |-----------------|-----------------|-----------------|
@@ -105,6 +106,7 @@ tt.print(
 )
 ```
 produces
+<!--pytest-codeblocks:expected-output-->
 ```
 1xxxxxxxxxxxxxxxxx7xxxxxxxxxxxxxxxxx7xxxxxxxxxxxxxxxxx2
 0 a               0 bb              0 ccc             0
@@ -123,5 +125,10 @@ To run the termtables unit tests, check out this repository and type
 tox
 ```
 
+### Other software for terminal tables
+
+ * [Rich](https://github.com/willmcgugan/rich)
+
 ### License
-This software is published under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
+This software is published under the [GPL-3.0
+license](https://www.gnu.org/licenses/gpl-3.0.en.html).
